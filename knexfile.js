@@ -5,7 +5,7 @@ require('dotenv').config();
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 module.exports = {
-  client: 'mysql',
+  client: 'postgresql',
   connection: {
     database: 'wecareapp',
     user:     process.env.DB_USER,
