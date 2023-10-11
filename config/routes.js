@@ -6,6 +6,7 @@ module.exports = app => {
     app.post("/signup", app.api.usuarios.save);
     app.post("/sigin", app.api.auth.signin);
 
-    app.get("/visitantes", app.config.passport.authenticate(), app.api.visitantes.getVisitantes);
+    // app.get("/visitantes", app.config.passport.authenticate(), app.api.visitantes.getVisitantes);
+    app.get("/visitantes", app.api.visitantes.getVisitantes);
     app.post("/visitantes", app.api.visitantes.save);
 }

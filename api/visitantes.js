@@ -28,7 +28,8 @@ module.exports = app => {
         if (!req.body.telefone.match(/^\d{10,11}$/)) {
             return res.status(400).send('Telefone inválido')
         }
-        app.db('visitantes')
+
+        app.db.db('visitantes')
             .insert(req.body)
             .then(_ => res.status(204).send())
             .catch(err => res.status(400).json(err))

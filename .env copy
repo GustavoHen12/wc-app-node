@@ -1,9 +1,0 @@
-DB_USER=gustavo
-DB_PWD=y3NhcF3EVd8eiPUHVjunOsr8ShOMVtRx
-DB_NAME=wecareapp
-DB_HOST=postgres://gustavo:y3NhcF3EVd8eiPUHVjunOsr8ShOMVtRx@dpg-ciorugt9aq08igdtbrng-a/wecareapp
-DB_PORT=5432
-DB_DIALECT=pqsql
-AUTH_SECRET=Clareandocomseusraiosverdeebranco
-SECRET=me5ZJJ5DnfrbL32EJaH5
-PORT=3000
