@@ -17,6 +17,7 @@ module.exports = app => {
         if(!req.body.secret || req.body.secret !== process.env.SECRET) {
             return res.status(401).send("Acesso negado!");
         }
+        
         await geraHash(req.body.senha, hash => {
             app.db('usuarios')
                 .insert({

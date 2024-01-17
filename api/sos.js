@@ -1,22 +1,17 @@
 const moment = require('moment')
 
 module.exports = app => {
-    const getVisitantes = (req, res) => {
-        const date = req.query.data;
-        const query = app.db('visitantes')
-
-        if(date) {
-            query.where('dataHora', '<=', date + ' 23:59:59')
-                .where('dataHora', '>=', date + ' 00:00:00')
-                .orderBy('dataHora', 'desc');
-            console.log(query.toString())
-        }
-
-        query.then(visitantes => res.json(visitantes))
+    const get = (req, res) => {
+        app.db('sos')
+            .select()
+            .list()
+            .then(pedidos => res.json(pedidos))
             .catch(err => res.status(400).json(err))
     }
 
     const save = (req, res) => {
+        console.log(req.body);
+
         if (!req.body.nome || !req.body.nome.trim()) {
             return res.status(400).send('Nome é um campo obrigatório')
         }
@@ -29,11 +24,11 @@ module.exports = app => {
             req.body.dataHora = moment().format('YYYY-MM-DD HH:mm:ss')
         }
 
-        app.db('visitantes')
+        app.db('sos')
             .insert(req.body)
             .then(_ => res.status(204).send())
             .catch(err => res.status(400).json(err))
     }
 
-    return { getVisitantes, save }
+    return { get, save }
 }
